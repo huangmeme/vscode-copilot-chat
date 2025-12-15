@@ -2642,6 +2642,26 @@
 							"preview"
 						],
 						"markdownDescription": "%github.copilot.config.byok.ollamaEndpoint%"
+					},
+					"github.copilot.git.commitMessage.customEndpoint.enabled": {
+						"type": "boolean",
+						"default": false,
+						"markdownDescription": "启用自定义大模型服务来生成 Git 提交消息。"
+					},
+					"github.copilot.git.commitMessage.customEndpoint.url": {
+						"type": "string",
+						"default": "",
+						"markdownDescription": "自定义大模型服务的 API endpoint URL（例如：https://api.deepseek.com/v1/chat/completions）"
+					},
+					"github.copilot.git.commitMessage.customEndpoint.apiKey": {
+						"type": "string",
+						"default": "",
+						"markdownDescription": "自定义大模型服务的 API Key"
+					},
+					"github.copilot.git.commitMessage.customEndpoint.model": {
+						"type": "string",
+						"default": "gpt-4",
+						"markdownDescription": "要使用的模型名称（例如：deepseek-chat）"
 					}
 				}
 			},

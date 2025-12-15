@@ -878,6 +878,12 @@ export namespace ConfigKey {
 	export const GitHubMcpToolsets = defineSetting<string[]>('chat.githubMcpServer.toolsets', ConfigType.Simple, ['default']);
 	export const GitHubMcpReadonly = defineSetting<boolean>('chat.githubMcpServer.readonly', ConfigType.Simple, false);
 	export const GitHubMcpLockdown = defineSetting<boolean>('chat.githubMcpServer.lockdown', ConfigType.Simple, false);
+
+	// Custom Git Commit Message Endpoint Configuration
+	export const GitCommitMessageCustomEndpointEnabled = defineSetting<boolean>('git.commitMessage.customEndpoint.enabled', ConfigType.Simple, false);
+	export const GitCommitMessageCustomEndpointUrl = defineSetting<string>('git.commitMessage.customEndpoint.url', ConfigType.Simple, '');
+	export const GitCommitMessageCustomEndpointApiKey = defineSetting<string>('git.commitMessage.customEndpoint.apiKey', ConfigType.Simple, '');
+	export const GitCommitMessageCustomEndpointModel = defineSetting<string>('git.commitMessage.customEndpoint.model', ConfigType.Simple, 'gpt-4');
 }
 
 export function getAllConfigKeys(): string[] {
