@@ -21,6 +21,7 @@ import { OllamaLMProvider } from './ollamaProvider';
 import { OAIBYOKLMProvider } from './openAIProvider';
 import { OpenRouterLMProvider } from './openRouterProvider';
 import { TencentCodingPlanLMProvider } from './tencentCodingPlanProvider';
+import { AliyunCodingPlanLMProvider } from './aliyunCodingPlanProvider';
 import { XAIBYOKLMProvider } from './xAIProvider';
 import { ZhipuLMProvider } from './zhipuProvider';
 
@@ -65,6 +66,7 @@ export class BYOKContrib extends Disposable implements IExtensionContribution {
 			this._providers.set(CustomOAIBYOKModelProvider.providerName.toLowerCase(), instantiationService.createInstance(CustomOAIBYOKModelProvider, this._byokStorageService));
 			this._providers.set(ZhipuLMProvider.providerName.toLowerCase(), instantiationService.createInstance(ZhipuLMProvider, this._byokStorageService));
 			this._providers.set(TencentCodingPlanLMProvider.providerName.toLowerCase(), instantiationService.createInstance(TencentCodingPlanLMProvider, this._byokStorageService));
+			this._providers.set(AliyunCodingPlanLMProvider.providerName.toLowerCase(), instantiationService.createInstance(AliyunCodingPlanLMProvider, this._byokStorageService));
 
 			for (const [providerName, provider] of this._providers) {
 				this._store.add(lm.registerLanguageModelChatProvider(providerName, provider));
