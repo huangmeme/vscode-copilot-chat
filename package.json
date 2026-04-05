@@ -1833,6 +1833,23 @@
 				}
 			},
 			{
+				"vendor": "zhipu",
+				"displayName": "Zhipu",
+				"configuration": {
+					"properties": {
+						"apiKey": {
+							"type": "string",
+							"secret": true,
+							"description": "API key for Zhipu",
+							"title": "API Key"
+						}
+					},
+					"required": [
+						"apiKey"
+					]
+				}
+			},
+			{
 				"vendor": "customoai",
 				"when": "productQualityType != 'stable'",
 				"displayName": "OpenAI Compatible",
