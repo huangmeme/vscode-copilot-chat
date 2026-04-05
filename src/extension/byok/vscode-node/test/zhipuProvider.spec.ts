@@ -44,7 +44,7 @@ describe('ZhipuLMProvider', () => {
 
 		const models = await provider.provideLanguageModelChatInformation({ silent: false }, tokenSource.token);
 
-		expect(models.map(model => model.id)).toEqual(['glm-4.7', 'glm-4.7-flash', 'glm-4.5-air']);
+		expect(models.map(model => model.id)).toEqual(['glm-4.7', 'glm-4.7-flash', 'glm-4.5-air', 'glm-5-turbo', 'glm-5.1']);
 	});
 
 	it('returns no models for silent discovery without an API key', async () => {
