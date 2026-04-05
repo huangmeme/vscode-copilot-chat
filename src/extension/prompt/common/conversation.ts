@@ -444,11 +444,11 @@ export class GlobalContextMessageMetadata {
 }
 
 /**
- * Metadata capturing token usage information from Anthropic Messages API.
+ * Metadata capturing token usage information from the language model.
  * Stores prompt tokens and output tokens for each turn.
  * This metadata is used to trigger summarization when token usage exceeds thresholds.
  */
-export class AnthropicTokenUsageMetadata {
+export class ModelTokenUsageMetadata {
 	constructor(
 		/** Total number of prompt input tokens */
 		readonly promptTokens: number,
@@ -456,6 +456,9 @@ export class AnthropicTokenUsageMetadata {
 		readonly outputTokens: number,
 	) { }
 }
+
+/** @deprecated Use ModelTokenUsageMetadata instead */
+export type AnthropicTokenUsageMetadata = ModelTokenUsageMetadata;
 
 export function getGlobalContextCacheKey(accessor: ServicesAccessor): string {
 	const workspaceService = accessor.get(IWorkspaceService);
