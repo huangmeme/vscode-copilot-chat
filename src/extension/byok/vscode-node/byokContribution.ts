@@ -12,6 +12,7 @@ import { Disposable } from '../../../util/vs/base/common/lifecycle';
 import { IInstantiationService } from '../../../util/vs/platform/instantiation/common/instantiation';
 import { BYOKKnownModels, isBYOKEnabled } from '../../byok/common/byokProvider';
 import { IExtensionContribution } from '../../common/contributions';
+import { AliyunCodingPlanLMProvider } from './aliyunCodingPlanProvider';
 import { AnthropicLMProvider } from './anthropicProvider';
 import { AzureBYOKModelProvider } from './azureProvider';
 import { BYOKStorageService, IBYOKStorageService } from './byokStorageService';
@@ -21,7 +22,6 @@ import { OllamaLMProvider } from './ollamaProvider';
 import { OAIBYOKLMProvider } from './openAIProvider';
 import { OpenRouterLMProvider } from './openRouterProvider';
 import { TencentCodingPlanLMProvider } from './tencentCodingPlanProvider';
-import { AliyunCodingPlanLMProvider } from './aliyunCodingPlanProvider';
 import { XAIBYOKLMProvider } from './xAIProvider';
 import { ZhipuLMProvider } from './zhipuProvider';
 

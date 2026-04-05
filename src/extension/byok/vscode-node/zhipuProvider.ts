@@ -128,6 +128,13 @@ export class ZhipuLMProvider extends AbstractLanguageModelChatProvider {
 			});
 		}
 
+		// Zhipu Anthropic-compatible API requires explicit thinking config
+		// to return thinking blocks, same as Claude API.
+		const thinkingConfig: Anthropic.Messages.MessageCreateParamsStreaming['thinking'] =
+			ZHIPU_STATIC_MODELS[model.id]?.thinking
+				? { type: 'enabled', budget_tokens: 10000 }
+				: undefined;
+
 		const params: Anthropic.Messages.MessageCreateParamsStreaming = {
 			model: model.id,
 			messages: convertedMessages,
@@ -135,11 +142,8 @@ export class ZhipuLMProvider extends AbstractLanguageModelChatProvider {
 			stream: true,
 			system: [system],
 			tools: tools.length > 0 ? tools : undefined,
+			thinking: thinkingConfig,
 		};
-
-		// Zhipu GLM-4.7 models have thinking enabled by default;
-		// don't override the budget to avoid consuming the entire max_tokens budget.
-		// The model handles thinking token allocation internally.
 
 		await this._makeRequest(anthropicClient, progress, params, token);
 	}

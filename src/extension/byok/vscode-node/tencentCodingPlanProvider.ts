@@ -152,6 +152,13 @@ export class TencentCodingPlanLMProvider extends AbstractLanguageModelChatProvid
 			});
 		}
 
+		// Tencent Anthropic-compatible API requires explicit thinking config
+		// to return thinking blocks, same as Claude API.
+		const thinkingConfig: Anthropic.Messages.MessageCreateParamsStreaming['thinking'] =
+			TENCENT_CODING_PLAN_STATIC_MODELS[model.id]?.thinking
+				? { type: 'enabled', budget_tokens: 10000 }
+				: undefined;
+
 		const params: Anthropic.Messages.MessageCreateParamsStreaming = {
 			model: model.id,
 			messages: convertedMessages,
@@ -159,11 +166,8 @@ export class TencentCodingPlanLMProvider extends AbstractLanguageModelChatProvid
 			stream: true,
 			system: [system],
 			tools: tools.length > 0 ? tools : undefined,
+			thinking: thinkingConfig,
 		};
-
-		// Coding Plan models have thinking enabled by default;
-		// don't override the budget to avoid consuming the entire max_tokens budget.
-		// The model handles thinking token allocation internally.
 
 		await this._makeRequest(anthropicClient, progress, params, token);
 	}
