@@ -17,7 +17,9 @@ import { AnthropicLMProvider } from './anthropicProvider';
 import { AzureBYOKModelProvider } from './azureProvider';
 import { BYOKStorageService, IBYOKStorageService } from './byokStorageService';
 import { CustomOAIBYOKModelProvider } from './customOAIProvider';
+import { DeepSeekLMProvider } from './deepseekProvider';
 import { GeminiNativeBYOKLMProvider } from './geminiNativeProvider';
+import { KimiLMProvider } from './kimiProvider';
 import { OllamaLMProvider } from './ollamaProvider';
 import { OAIBYOKLMProvider } from './openAIProvider';
 import { OpenRouterLMProvider } from './openRouterProvider';
@@ -67,6 +69,8 @@ export class BYOKContrib extends Disposable implements IExtensionContribution {
 			this._providers.set(ZhipuLMProvider.providerName.toLowerCase(), instantiationService.createInstance(ZhipuLMProvider, this._byokStorageService));
 			this._providers.set(TencentCodingPlanLMProvider.providerName.toLowerCase(), instantiationService.createInstance(TencentCodingPlanLMProvider, this._byokStorageService));
 			this._providers.set(AliyunCodingPlanLMProvider.providerName.toLowerCase(), instantiationService.createInstance(AliyunCodingPlanLMProvider, this._byokStorageService));
+			this._providers.set(KimiLMProvider.providerName.toLowerCase(), instantiationService.createInstance(KimiLMProvider, this._byokStorageService));
+			this._providers.set(DeepSeekLMProvider.providerName.toLowerCase(), instantiationService.createInstance(DeepSeekLMProvider, this._byokStorageService));
 
 			for (const [providerName, provider] of this._providers) {
 				this._store.add(lm.registerLanguageModelChatProvider(providerName, provider));

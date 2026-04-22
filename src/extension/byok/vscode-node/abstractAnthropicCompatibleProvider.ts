@@ -150,7 +150,7 @@ export abstract class AbstractAnthropicCompatibleLMProvider extends AbstractLang
 		return 10000;
 	}
 
-	private async _makeRequest(
+	protected async _makeRequest(
 		anthropicClient: Anthropic,
 		progress: Progress<LMResponsePart>,
 		params: Anthropic.Messages.MessageCreateParamsStreaming,
